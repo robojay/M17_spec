@@ -328,14 +328,16 @@ decode just the LICH and check if the full message should be decoded.</p>
 </div>
 <div class="section" id="golay-24-12">
 <h3>Golay (24,12)<a class="headerlink" href="#golay-24-12" title="Permalink to this headline">¶</a></h3>
-<p>The Golay (24,12) encoder uses the polynomial 0xC75 to generate the 11
-check bits.  The check bits and an overall parity bit are appended to
-the 12 bit data, resulting in a 24 bit encoded chunk.</p>
+<p>The Golay (24,12) encoder uses generating polynomial <em>g</em> given below to generate the 11
+check bits. The check bits and an overall parity bit are appended to
+the 12 bit data, resulting in a 24 bit codeword. The resulting code is systematic,
+meaning that the input data (message) is embedded in the codeword.</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-G =&amp; x^{11} + x^{10} + x^6 + x^5 + x^4 + x^2 + 1
+g =&amp; x^{11} + x^{10} + x^6 + x^5 + x^4 + x^2 + 1
 \end{align}\]</div>
-<p>The output of the Golay encoder is shown in the table below.</p>
+<p>This is equivalent to 0xC75 in hexadecimal notation.
+The output of the Golay encoder is shown in the table below.</p>
 <blockquote>
 <div><table class="docutils align-default">
 <colgroup>
@@ -353,7 +355,7 @@ G =&amp; x^{11} + x^{10} + x^6 + x^5 + x^4 + x^2 + 1
 <tr class="row-even"><td><p>Position</p></td>
 <td><p>23..12</p></td>
 <td><p>11..1</p></td>
-<td><p>0</p></td>
+<td><p>0 (LSB)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Length</p></td>
 <td><p>12</p></td>
@@ -407,40 +409,33 @@ scheme has to be used.</p>
 </ol>
 <p>Scheme <span class="math notranslate nohighlight">\(P_1\)</span> is used for the initial LICH link setup info, taking 488
 bits of encoded data and selecting 368 bits. The <span class="math notranslate nohighlight">\(gcd(368, 488)\)</span>
-is 8 which, when used to divide, leaves 46 and 61. A full puncture
-pattern requires the output be divisible by the number of encoding
-polynomials. For this case the full puncture matrix should have 122
-entries with 92 of them being 1.</p>
+is 8 which, when used to divide, leaves 46 and 61 bits. However, a full puncture
+pattern requires the puncturing matrix entries count to be divisible by the number of encoding
+polynomials. For this case a partial puncture matrix is used. It has 61
+entries with 46 of them being ones and shall be used 8 times, repeatedly.
+The construction of the partial puncturing pattern <span class="math notranslate nohighlight">\(P_1\)</span> is as follows:</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+  P_1 = &amp; \begin{bmatrix}
+  1 &amp; r &amp; \vdots &amp; r
+  \end{bmatrix}
+\end{align}</div><p>In which <span class="math notranslate nohighlight">\(r=[1, 0, 1, 1]\)</span> and is used 15 times to form an array of length 61.
+The <em>r</em> matrix is actually a 2/3 rate puncturer. It can be used, because after subtracting
+1 bit from 61, multiplying this amount by 3/4 gives 45 bits.
+The first pass of the partial puncturer discards <span class="math notranslate nohighlight">\(G_1\)</span> bits only, second pass discards
+<span class="math notranslate nohighlight">\(G_2\)</span>, third - <span class="math notranslate nohighlight">\(G_1\)</span> again, and so on. This ensures that both bits are punctured out evenly.</p>
 <p>Scheme <span class="math notranslate nohighlight">\(P_2\)</span> is for frames (excluding LICH chunks, which are coded
 differently). This takes 296 encoded bits and selects 272 of them.
 Every 12th bit is being punctured out, leaving 272 bits.
-The full matrix shall have 12 entries with 11 being 1.</p>
-<p>The matrix <span class="math notranslate nohighlight">\(P_1\)</span> can be represented more concisely by duplicating a
-smaller matrix with a <em>flattening</em>.</p>
+The full matrix shall have 12 entries with 11 being ones.</p>
+<p>The puncturing scheme <span class="math notranslate nohighlight">\(P_2\)</span> is defined by its partial puncturing matrix:</p>
 <div class="math notranslate nohighlight">
 \begin{align}
-  S_{} = &amp; \begin{bmatrix}
-  a &amp; \vec{r_1} &amp; c \\
-  b &amp; \vec{r_2} &amp; X
-  \end{bmatrix} \\
-  S_{full} = &amp; \begin{bmatrix}
-  a &amp; \vec{r_1} &amp; c &amp; b &amp; \vec{r_2} \\
-  b &amp; \vec{r_2} &amp; a &amp; \vec{r_1} &amp; c
-  \end{bmatrix}
-\end{align}</div><p>The puncturing schemes are defined by their partial puncturing matrices:</p>
-<div class="math notranslate nohighlight">
-\begin{align}
-P_1 = &amp; \begin{bmatrix}
-   1 \\
-   1, 0, 1, 1 \\
-   \vdots \\
-   \scriptstyle\times 15
-\end{bmatrix} \\
 P_2 = &amp; \begin{bmatrix}
 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0
 \end{bmatrix}
-\end{align}</div><p>The complete linearized representations are:</p>
+\end{align}</div><p>The linearized representations are:</p>
 <div class="literal-block-wrapper docutils container" id="id12">
 <div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">linearized puncture patterns</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">P1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
