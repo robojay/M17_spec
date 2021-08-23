@@ -407,7 +407,7 @@ scheme has to be used.</p>
 <li><p><span class="math notranslate nohighlight">\(P_1\)</span> leaving 46 from 61 encoded bits</p></li>
 <li><p><span class="math notranslate nohighlight">\(P_2\)</span> leaving 11 from 12 encoded bits</p></li>
 </ol>
-<p>Scheme <span class="math notranslate nohighlight">\(P_1\)</span> is used for the initial LICH link setup info, taking 488
+<p>Scheme <span class="math notranslate nohighlight">\(P_1\)</span> is used for the <em>link setup frame</em>, taking 488
 bits of encoded data and selecting 368 bits. The <span class="math notranslate nohighlight">\(gcd(368, 488)\)</span>
 is 8 which, when used to divide, leaves 46 and 61 bits. However, a full puncture
 pattern requires the puncturing matrix entries count to be divisible by the number of encoding
@@ -416,13 +416,15 @@ entries with 46 of them being ones and shall be used 8 times, repeatedly.
 The construction of the partial puncturing pattern <span class="math notranslate nohighlight">\(P_1\)</span> is as follows:</p>
 <div class="math notranslate nohighlight">
 \begin{align}
+  \mathbb{M} = &amp; \begin{bmatrix}
+  1 &amp; 0 &amp; 1 &amp; 1
+  \end{bmatrix} \\
   P_1 = &amp; \begin{bmatrix}
-  1 &amp; r &amp; \vdots &amp; r
+  1 &amp; \mathbb{M}_{1} &amp; \cdots &amp; \mathbb{M}_{15}
   \end{bmatrix}
-\end{align}</div><p>In which <span class="math notranslate nohighlight">\(r=[1, 0, 1, 1]\)</span> and is used 15 times to form an array of length 61.
-The <em>r</em> matrix is actually a 2/3 rate puncturer. It can be used, because after subtracting
-1 bit from 61, multiplying this amount by 3/4 gives 45 bits.
-The first pass of the partial puncturer discards <span class="math notranslate nohighlight">\(G_1\)</span> bits only, second pass discards
+\end{align}</div><p>In which <span class="math notranslate nohighlight">\(\mathbb{M}\)</span> is a standard 2/3 rate puncture matrix and is used 15 times,
+along with a leading <cite>1</cite> to form an array of length 61.</p>
+<p>The first pass of the partial puncturer discards <span class="math notranslate nohighlight">\(G_1\)</span> bits only, second pass discards
 <span class="math notranslate nohighlight">\(G_2\)</span>, third - <span class="math notranslate nohighlight">\(G_1\)</span> again, and so on. This ensures that both bits are punctured out evenly.</p>
 <p>Scheme <span class="math notranslate nohighlight">\(P_2\)</span> is for frames (excluding LICH chunks, which are coded
 differently). This takes 296 encoded bits and selects 272 of them.
