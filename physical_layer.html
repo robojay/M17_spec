@@ -416,16 +416,18 @@ entries with 46 of them being ones and shall be used 8 times, repeatedly.
 The construction of the partial puncturing pattern <span class="math notranslate nohighlight">\(P_1\)</span> is as follows:</p>
 <div class="math notranslate nohighlight">
 \begin{align}
-  \mathbb{M} = &amp; \begin{bmatrix}
+  M = &amp; \begin{bmatrix}
   1 &amp; 0 &amp; 1 &amp; 1
   \end{bmatrix} \\
-  P_1 = &amp; \begin{bmatrix}
-  1 &amp; \mathbb{M}_{1} &amp; \cdots &amp; \mathbb{M}_{15}
+
+  P_{1} = &amp; \begin{bmatrix}
+  1 &amp; M_{1} &amp; \cdots &amp; M_{15}
   \end{bmatrix}
-\end{align}</div><p>In which <span class="math notranslate nohighlight">\(\mathbb{M}\)</span> is a standard 2/3 rate puncture matrix and is used 15 times,
-along with a leading <cite>1</cite> to form an array of length 61.</p>
+\end{align}</div><p>In which <span class="math notranslate nohighlight">\(M\)</span> is a standard 2/3 rate puncture matrix and is used 15 times,
+along with a leading <cite>1</cite> to form <span class="math notranslate nohighlight">\(P_1\)</span>, an array of length 61.</p>
 <p>The first pass of the partial puncturer discards <span class="math notranslate nohighlight">\(G_1\)</span> bits only, second pass discards
-<span class="math notranslate nohighlight">\(G_2\)</span>, third - <span class="math notranslate nohighlight">\(G_1\)</span> again, and so on. This ensures that both bits are punctured out evenly.</p>
+<span class="math notranslate nohighlight">\(G_2\)</span>, third - <span class="math notranslate nohighlight">\(G_1\)</span> again, and so on. This ensures that both bits are punctured
+out evenly.</p>
 <p>Scheme <span class="math notranslate nohighlight">\(P_2\)</span> is for frames (excluding LICH chunks, which are coded
 differently). This takes 296 encoded bits and selects 272 of them.
 Every 12th bit is being punctured out, leaving 272 bits.
