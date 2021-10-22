@@ -1,73 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Application Layer &mdash; M17 Protocol Specification  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>Application Layer &mdash; M17 Protocol Specification  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Recommendation for the codeplug structure" href="codeplug.html" />
     <link rel="prev" title="Data Link Layer" href="data_link_layer.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> M17 Protocol Specification
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -75,18 +36,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Part I - Air and IP Interface:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="summary.html">M17 RF Protocol: Summary</a></li>
@@ -117,76 +67,35 @@
 <li class="toctree-l1"><a class="reference internal" href="kiss_protocol.html">KISS Protocol</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">M17 Protocol Specification</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Application Layer</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/application_layer.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="application-layer">
-<h1>Application Layer<a class="headerlink" href="#application-layer" title="Permalink to this headline">¶</a></h1>
+<h1>Application Layer<a class="headerlink" href="#application-layer" title="Permalink to this headline"></a></h1>
 <p>PARTS 1 AND 2 REMOVED – will add this later.</p>
 <div class="section" id="packet-superframes">
-<span id="id1"></span><h2>Packet Superframes<a class="headerlink" href="#packet-superframes" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Packet Superframes<a class="headerlink" href="#packet-superframes" title="Permalink to this headline"></a></h2>
 <p>Packet superframes are composed of a 1..n byte data type specifier, 0..797 bytes of
 payload data.  The data type specifier is encoded in the same way as UTF-8.  It provides
 efficient coding of common data types.  And it can be extended to include a very large
@@ -194,7 +103,7 @@ number of distinct packet data type codes.</p>
 <p>The data type specifier can also be used as a protocol specifier.  For example,
 the following protocol identifers are reserved in the M17 packet spec:</p>
 <table class="docutils align-default" id="id6">
-<caption><span class="caption-number">Table 17 </span><span class="caption-text">Reserved Protocols</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 17 </span><span class="caption-text">Reserved Protocols</span><a class="headerlink" href="#id6" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -231,11 +140,11 @@ the following protocol identifers are reserved in the M17 packet spec:</p>
 <p>The data type specifier is used to compute the CRC, along with the payload.</p>
 </div>
 <div class="section" id="encryption-types">
-<h2>Encryption Types<a class="headerlink" href="#encryption-types" title="Permalink to this headline">¶</a></h2>
+<h2>Encryption Types<a class="headerlink" href="#encryption-types" title="Permalink to this headline"></a></h2>
 <p>Encryption is optional. The use of it may be restricted within some radio
 services and countries, and should only be used if legally permissible.</p>
 <div class="section" id="null-encryption">
-<h3>Null Encryption<a class="headerlink" href="#null-encryption" title="Permalink to this headline">¶</a></h3>
+<h3>Null Encryption<a class="headerlink" href="#null-encryption" title="Permalink to this headline"></a></h3>
 <p>Encryption type = <span class="math notranslate nohighlight">\(00_2\)</span></p>
 <p>No encryption is performed, payload is sent in clear text.</p>
 <p>The “Encryption SubType” bits in the Stream Type field then indicate
@@ -309,7 +218,7 @@ the rest of this specification.</p>
 </table>
 </div>
 <div class="section" id="scrambler">
-<h3>Scrambler<a class="headerlink" href="#scrambler" title="Permalink to this headline">¶</a></h3>
+<h3>Scrambler<a class="headerlink" href="#scrambler" title="Permalink to this headline"></a></h3>
 <p>Encryption type = <span class="math notranslate nohighlight">\(01_2\)</span></p>
 <p>Scrambling is an encryption by bit inversion using a bitwise
 exclusive-or (XOR) operation between bit sequence of data and
@@ -322,7 +231,7 @@ initialised with a seed value of the same length as the shift
 register. Seed value acts as an encryption key for the scrambler
 algorithm.  Figures 5 to 8 show block diagrams of the algorithm</p>
 <table class="docutils align-default" id="id7">
-<caption><span class="caption-number">Table 18 </span><span class="caption-text">LFSR scrambler polynomials</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 18 </span><span class="caption-text">LFSR scrambler polynomials</span><a class="headerlink" href="#id7" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -356,19 +265,19 @@ algorithm.  Figures 5 to 8 show block diagrams of the algorithm</p>
 </table>
 <div class="figure align-default" id="id8">
 <a class="reference internal image-reference" href="_images/LFSR_8.svg"><img alt="_images/LFSR_8.svg" src="_images/LFSR_8.svg" /></a>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">8-bit LFSR taps</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">8-bit LFSR taps</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
 </div>
 <div class="figure align-default" id="id9">
 <a class="reference internal image-reference" href="_images/LFSR_16.svg"><img alt="_images/LFSR_16.svg" src="_images/LFSR_16.svg" /></a>
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">16-bit LFSR taps</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">16-bit LFSR taps</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
 </div>
 <div class="figure align-default" id="id10">
 <a class="reference internal image-reference" href="_images/LFSR_24.svg"><img alt="_images/LFSR_24.svg" src="_images/LFSR_24.svg" /></a>
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">24-bit LFSR taps</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">24-bit LFSR taps</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
 </div>
 </div>
 <div class="section" id="advanced-encryption-standard-aes">
-<h3>Advanced Encryption Standard (AES)<a class="headerlink" href="#advanced-encryption-standard-aes" title="Permalink to this headline">¶</a></h3>
+<h3>Advanced Encryption Standard (AES)<a class="headerlink" href="#advanced-encryption-standard-aes" title="Permalink to this headline"></a></h3>
 <p>Encryption type = <span class="math notranslate nohighlight">\(10_2\)</span></p>
 <p>This method uses AES block cipher in counter (CTR) mode, with a 96-bit
 nonce that should never be used for more than one separate stream and a 32 bit CTR.</p>
@@ -397,7 +306,7 @@ shown in Table 9. Timestamp is 32 LSB portion of the number of seconds
 that elapsed since the beginning of 1970-01-01, 00:00:00 UTC, minus leap
 seconds (a.k.a. “unix time”).</p>
 <table class="docutils align-default" id="id11">
-<caption><span class="caption-number">Table 19 </span><span class="caption-text">96 bit nonce field structure</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 19 </span><span class="caption-text">96 bit nonce field structure</span><a class="headerlink" href="#id11" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -443,50 +352,33 @@ alleviate this issue <a class="reference internal" href="#crypto" id="id5"><span
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="codeplug.html" class="btn btn-neutral float-right" title="Recommendation for the codeplug structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="data_link_layer.html" class="btn btn-neutral float-left" title="Data Link Layer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="codeplug.html" class="btn btn-neutral float-right" title="Recommendation for the codeplug structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, Project M17.
-
-    </p>
+    <p>&#169; Copyright 2021, Project M17.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

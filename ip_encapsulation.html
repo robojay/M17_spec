@@ -1,73 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>M17 Internet Protocol (IP) Networking &mdash; M17 Protocol Specification  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>M17 Internet Protocol (IP) Networking &mdash; M17 Protocol Specification  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="KISS Protocol" href="kiss_protocol.html" />
     <link rel="prev" title="Interleaving" href="interleaving.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> M17 Protocol Specification
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -75,18 +36,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Part I - Air and IP Interface:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">M17 RF Protocol: Summary</a></li>
@@ -120,73 +70,32 @@
 <li class="toctree-l1"><a class="reference internal" href="kiss_protocol.html">KISS Protocol</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">M17 Protocol Specification</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>M17 Internet Protocol (IP) Networking</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/ip_encapsulation.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="m17-internet-protocol-ip-networking">
-<h1>M17 Internet Protocol (IP) Networking<a class="headerlink" href="#m17-internet-protocol-ip-networking" title="Permalink to this headline">¶</a></h1>
+<h1>M17 Internet Protocol (IP) Networking<a class="headerlink" href="#m17-internet-protocol-ip-networking" title="Permalink to this headline"></a></h1>
 <p>Digital modes are commonly networked together through linked repeaters using IP networking.</p>
 <p>For commercial protocols like DMR, this is meant for linking metropolitan
 and state networks together and allows for easy interoperability between
@@ -204,12 +113,12 @@ skip the RF link that current hotspot systems require, finally bringing
 to fruition the “Amateur digital radio is just VoIP” dystopian future
 we were all warned about.</p>
 <div class="section" id="standard-ip-framing">
-<h2>Standard IP Framing<a class="headerlink" href="#standard-ip-framing" title="Permalink to this headline">¶</a></h2>
+<h2>Standard IP Framing<a class="headerlink" href="#standard-ip-framing" title="Permalink to this headline"></a></h2>
 <p>M17 over IP is big endian, consistent with other IP protocols.
 We have standardized on UDP port 17000, this port is recommended but not required.
 Later specifications may require this port.</p>
 <table class="docutils align-default" id="id4">
-<caption><span class="caption-number">Table 25 </span><span class="caption-text">Internet frame fields</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 25 </span><span class="caption-text">Internet frame fields</span><a class="headerlink" href="#id4" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -246,7 +155,7 @@ Later specifications may require this port.</p>
 of the packet, such as when translating from RF to IP framing.</p>
 </div>
 <div class="section" id="control-packets">
-<h2>Control Packets<a class="headerlink" href="#control-packets" title="Permalink to this headline">¶</a></h2>
+<h2>Control Packets<a class="headerlink" href="#control-packets" title="Permalink to this headline"></a></h2>
 <p>Reflectors use a few different types of control frames, identified by their magic:</p>
 <ul class="simple">
 <li><p><em>CONN</em> - Connect to a reflector</p></li>
@@ -257,9 +166,9 @@ of the packet, such as when translating from RF to IP framing.</p>
 <li><p><em>DISC</em> - Disconnect (client-&gt;reflector or reflector-&gt;client)</p></li>
 </ul>
 <div class="section" id="conn">
-<h3>CONN<a class="headerlink" href="#conn" title="Permalink to this headline">¶</a></h3>
+<h3>CONN<a class="headerlink" href="#conn" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default" id="id5">
-<caption><span class="caption-number">Table 26 </span><span class="caption-text">Bytes of a CONN packet</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 26 </span><span class="caption-text">Bytes of a CONN packet</span><a class="headerlink" href="#id5" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 6%" />
 <col style="width: 94%" />
@@ -284,9 +193,9 @@ of the packet, such as when translating from RF to IP framing.</p>
 <p>A client sends this to a reflector to initiate a connection. The reflector replies with ACKN on successful linking, or NACK on failure.</p>
 </div>
 <div class="section" id="ackn">
-<h3>ACKN<a class="headerlink" href="#ackn" title="Permalink to this headline">¶</a></h3>
+<h3>ACKN<a class="headerlink" href="#ackn" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default" id="id6">
-<caption><span class="caption-number">Table 27 </span><span class="caption-text">Bytes of ACKN packet</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 27 </span><span class="caption-text">Bytes of ACKN packet</span><a class="headerlink" href="#id6" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 6%" />
 <col style="width: 94%" />
@@ -304,9 +213,9 @@ of the packet, such as when translating from RF to IP framing.</p>
 </table>
 </div>
 <div class="section" id="nack">
-<h3>NACK<a class="headerlink" href="#nack" title="Permalink to this headline">¶</a></h3>
+<h3>NACK<a class="headerlink" href="#nack" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default" id="id7">
-<caption><span class="caption-number">Table 28 </span><span class="caption-text">Bytes of NACK packet</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 28 </span><span class="caption-text">Bytes of NACK packet</span><a class="headerlink" href="#id7" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 5%" />
 <col style="width: 95%" />
@@ -324,9 +233,9 @@ of the packet, such as when translating from RF to IP framing.</p>
 </table>
 </div>
 <div class="section" id="ping">
-<h3>PING<a class="headerlink" href="#ping" title="Permalink to this headline">¶</a></h3>
+<h3>PING<a class="headerlink" href="#ping" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default" id="id8">
-<caption><span class="caption-number">Table 29 </span><span class="caption-text">Bytes of PING packet</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 29 </span><span class="caption-text">Bytes of PING packet</span><a class="headerlink" href="#id8" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 6%" />
 <col style="width: 94%" />
@@ -348,9 +257,9 @@ of the packet, such as when translating from RF to IP framing.</p>
 <p>Upon receivng a PING from a reflector, the client replies with a PONG</p>
 </div>
 <div class="section" id="pong">
-<h3>PONG<a class="headerlink" href="#pong" title="Permalink to this headline">¶</a></h3>
+<h3>PONG<a class="headerlink" href="#pong" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default" id="id9">
-<caption><span class="caption-number">Table 30 </span><span class="caption-text">Bytes of PONG packet</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 30 </span><span class="caption-text">Bytes of PONG packet</span><a class="headerlink" href="#id9" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 6%" />
 <col style="width: 94%" />
@@ -371,9 +280,9 @@ of the packet, such as when translating from RF to IP framing.</p>
 </table>
 </div>
 <div class="section" id="disc">
-<h3>DISC<a class="headerlink" href="#disc" title="Permalink to this headline">¶</a></h3>
+<h3>DISC<a class="headerlink" href="#disc" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default" id="id10">
-<caption><span class="caption-number">Table 31 </span><span class="caption-text">Bytes of DISC packet</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 31 </span><span class="caption-text">Bytes of DISC packet</span><a class="headerlink" href="#id10" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 6%" />
 <col style="width: 94%" />
@@ -399,50 +308,33 @@ of the packet, such as when translating from RF to IP framing.</p>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="kiss_protocol.html" class="btn btn-neutral float-right" title="KISS Protocol" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="interleaving.html" class="btn btn-neutral float-left" title="Interleaving" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kiss_protocol.html" class="btn btn-neutral float-right" title="KISS Protocol" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, Project M17.
-
-    </p>
+    <p>&#169; Copyright 2021, Project M17.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

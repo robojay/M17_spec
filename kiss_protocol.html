@@ -1,72 +1,33 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>KISS Protocol &mdash; M17 Protocol Specification  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>KISS Protocol &mdash; M17 Protocol Specification  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="M17 Internet Protocol (IP) Networking" href="ip_encapsulation.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> M17 Protocol Specification
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -74,18 +35,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Part I - Air and IP Interface:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">M17 RF Protocol: Summary</a></li>
@@ -146,73 +96,32 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">M17 Protocol Specification</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>KISS Protocol</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/kiss_protocol.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="kiss-protocol">
-<h1>KISS Protocol<a class="headerlink" href="#kiss-protocol" title="Permalink to this headline">¶</a></h1>
+<h1>KISS Protocol<a class="headerlink" href="#kiss-protocol" title="Permalink to this headline"></a></h1>
 <p>The purpose of this appendix is to document conventions for adapting KISS TNCs
 to M17 packet and streaming modes.  M17 is a more complex protocol, both at
 the baseband level and at the data link layer than is typical for HDLC-based
@@ -227,7 +136,7 @@ and decorrelation.  It is also responsible for baseband modulation.</p>
 <p>For streaming modes, all voice encoding (Codec2) is done on the host and
 not on the TNC.  The host is also responsible for constructing the LICH.</p>
 <div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference external" href="http://www.ax25.net/kiss.aspx">http://www.ax25.net/kiss.aspx</a></p></li>
@@ -237,7 +146,7 @@ not on the TNC.  The host is also responsible for constructing the LICH.</p>
 </div></blockquote>
 </div>
 <div class="section" id="glossary">
-<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline"></a></h2>
 <dl class="glossary simple">
 <dt id="term-tnc">TNC</dt><dd><p>Terminal node controller – a baseband network interface device to allow
 host computers to send data over a radio network, similar to a modem. It
@@ -285,7 +194,7 @@ setup frame.</p>
 </dl>
 </div>
 <div class="section" id="m17-protocols">
-<h2>M17 Protocols<a class="headerlink" href="#m17-protocols" title="Permalink to this headline">¶</a></h2>
+<h2>M17 Protocols<a class="headerlink" href="#m17-protocols" title="Permalink to this headline"></a></h2>
 <p>This specification defines KISS TNC modes for M17 packet and streaming modes,
 allowing the KISS protocol to be used to send and receive M17 packet and voice
 data. Both are bidirectional.  There are two packet modes defined. This is done
@@ -299,9 +208,9 @@ host transfers.</p>
 streaming protocol.</p>
 </div>
 <div class="section" id="kiss-basics">
-<h2>KISS Basics<a class="headerlink" href="#kiss-basics" title="Permalink to this headline">¶</a></h2>
+<h2>KISS Basics<a class="headerlink" href="#kiss-basics" title="Permalink to this headline"></a></h2>
 <div class="section" id="tx-delay">
-<h3>TX Delay<a class="headerlink" href="#tx-delay" title="Permalink to this headline">¶</a></h3>
+<h3>TX Delay<a class="headerlink" href="#tx-delay" title="Permalink to this headline"></a></h3>
 <p>If a KISS <strong>TX delay</strong> <span class="math notranslate nohighlight">\(T_d\)</span> greater than 0 is specified, the transmitter
 is keyed for <span class="math notranslate nohighlight">\(T_d * 10 ms\)</span> with only a DC signal present.</p>
 <p>The <span class="math notranslate nohighlight">\(T_d\)</span> value should be adjusted to the minimum required by the
@@ -316,7 +225,7 @@ signal.</p>
 </div>
 </div>
 <div class="section" id="packet-protocols">
-<h2>Packet Protocols<a class="headerlink" href="#packet-protocols" title="Permalink to this headline">¶</a></h2>
+<h2>Packet Protocols<a class="headerlink" href="#packet-protocols" title="Permalink to this headline"></a></h2>
 <p>In order to provide backward compatibility with the widest range of existing
 ham radio software, and to make use of features in the the M17 protocol
 itself, we will define two distint packet interfaces <em>BASIC</em> and <em>FULL</em>.</p>
@@ -325,12 +234,12 @@ identifier in the control byte.</p>
 <p>We first define basic packet mode as this is initially likely to be the
 most commonly used mode over KISS.</p>
 <div class="section" id="m17-basic-packet-mode">
-<h3>M17 Basic Packet Mode<a class="headerlink" href="#m17-basic-packet-mode" title="Permalink to this headline">¶</a></h3>
+<h3>M17 Basic Packet Mode<a class="headerlink" href="#m17-basic-packet-mode" title="Permalink to this headline"></a></h3>
 <p>Basic packet mode uses only the standard KISS protocol on <strong>TNC port</strong> 0.
 This is the default port for all TNCs.  Packets are sent using command 0.
 Again, this is normal behavior for KISS client applications.</p>
 <div class="section" id="sending-data">
-<h4>Sending Data<a class="headerlink" href="#sending-data" title="Permalink to this headline">¶</a></h4>
+<h4>Sending Data<a class="headerlink" href="#sending-data" title="Permalink to this headline"></a></h4>
 <p>In basic mode, the TNC only expects to receive packets from the host, as it
 would for any other mode supported AFSK, G3RUH, etc.</p>
 <p>If the TNC is configured for half-duplex, the TNC will do P-persistence CSMA
@@ -353,14 +262,14 @@ TNC will construct the next link setup frame (it can re-use the same link
 setup frame as it does not change) and send the next set of packet frames.</p>
 </div>
 <div class="section" id="limitations">
-<h4>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h4>
+<h4>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline"></a></h4>
 <p>The KISS specification defines no limitation to the packet size allowed.  Nor
 does it specify any means of returning error conditions back to the host.
 M17 packet protocol limits the raw packet payload size to 798 bytes.  The
 TNC must drop any packets larger than this.</p>
 </div>
 <div class="section" id="receiving-data">
-<h4>Receiving Data<a class="headerlink" href="#receiving-data" title="Permalink to this headline">¶</a></h4>
+<h4>Receiving Data<a class="headerlink" href="#receiving-data" title="Permalink to this headline"></a></h4>
 <p>When receiving M17 data, the TNC must receive and parse the link setup frame
 and verify that the following frames contain raw packet data.</p>
 <p>The TNC is responsible for decoding each packet, assembling the packet from
@@ -370,7 +279,7 @@ using <strong>KISS port</strong> 0.</p>
 </div>
 </div>
 <div class="section" id="m17-full-packet-mode">
-<h3>M17 Full Packet Mode<a class="headerlink" href="#m17-full-packet-mode" title="Permalink to this headline">¶</a></h3>
+<h3>M17 Full Packet Mode<a class="headerlink" href="#m17-full-packet-mode" title="Permalink to this headline"></a></h3>
 <p>The purpose of full packet mode is to provide access to the entire M17 packet
 protocol to the host.  This allows the host to set the source and destination
 fields, filter received packets based on the content these fields, enable
@@ -384,7 +293,7 @@ M17 packet frames.</p>
 <p>As with basic mode, the TNC uses the <strong>Duplex</strong> setting to enable/disable CSMA,
 and uses the <strong>P value</strong> for CSMA, with a fixes slot time of “4” (40 ms).</p>
 <div class="section" id="id1">
-<h4>Receiving Data<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<h4>Receiving Data<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h4>
 <p>For TNC to host transfers, the same occurs.  The TNC combines the link setup
 frame with the packet frame and sends both in one KISS frame to the host using
 <strong>KISS port</strong> 1.</p>
@@ -392,14 +301,14 @@ frame with the packet frame and sends both in one KISS frame to the host using
 </div>
 </div>
 <div class="section" id="stream-protocol">
-<h2>Stream Protocol<a class="headerlink" href="#stream-protocol" title="Permalink to this headline">¶</a></h2>
+<h2>Stream Protocol<a class="headerlink" href="#stream-protocol" title="Permalink to this headline"></a></h2>
 <p>The streaming protocol is fairly trivial to describe.  It is used by sending
 first a link setup frame followed by a stream of 26-byte data frames to
 <strong>KISS port</strong> 2.</p>
 <div class="section" id="stream-format">
-<h3>Stream Format<a class="headerlink" href="#stream-format" title="Permalink to this headline">¶</a></h3>
+<h3>Stream Format<a class="headerlink" href="#stream-format" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default" id="id3">
-<caption><span class="caption-number">Table 32 </span><span class="caption-text">M17 KISS Stream Protocol</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 32 </span><span class="caption-text">M17 KISS Stream Protocol</span><a class="headerlink" href="#id3" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -437,13 +346,13 @@ stream is active.  If that happens the stream is terminated and the packet
 that caused the protocol violation is dropped.</p>
 </div>
 <div class="section" id="data-frames">
-<h3>Data Frames<a class="headerlink" href="#data-frames" title="Permalink to this headline">¶</a></h3>
+<h3>Data Frames<a class="headerlink" href="#data-frames" title="Permalink to this headline"></a></h3>
 <p>The data frames contain a 6-byte (48-bit) LICH segment followed by a 20 byte
 payload segment consisting of frame number, 16-byte data payload and CRC. The
 TNC is responsible for parsing the frame number and detecting the end-of-stream
 bit to stop transmitting.</p>
 <table class="docutils align-default" id="id4">
-<caption><span class="caption-number">Table 33 </span><span class="caption-text">KISS Stream Data Frame</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 33 </span><span class="caption-text">KISS Stream Data Frame</span><a class="headerlink" href="#id4" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -472,7 +381,7 @@ bit to stop transmitting.</p>
 as interleaving, decorrelation, and baseband modulation.</p>
 </div>
 <div class="section" id="timing-constraints">
-<h3>Timing Constraints<a class="headerlink" href="#timing-constraints" title="Permalink to this headline">¶</a></h3>
+<h3>Timing Constraints<a class="headerlink" href="#timing-constraints" title="Permalink to this headline"></a></h3>
 <p>Streaming mode provides additional timing constraints on both host to TNC
 transfers and on TNC to host transfers.  Payload frames must arrive every
 40ms and must have a jitter below 40ms.  In general, it is expected that the
@@ -485,7 +394,7 @@ with the <strong>end of stream</strong> indicator set) by sending an empty data 
 the host.</p>
 </div>
 <div class="section" id="tnc-to-host-transfers">
-<h3>TNC to Host Transfers<a class="headerlink" href="#tnc-to-host-transfers" title="Permalink to this headline">¶</a></h3>
+<h3>TNC to Host Transfers<a class="headerlink" href="#tnc-to-host-transfers" title="Permalink to this headline"></a></h3>
 <p>TNC to host transfers are similar in that the TNC first sends the 30-byte
 link setup frame received to the host, followed by a stream of 26-byte data
 frames as described above.  These are sent using <strong>KISS port</strong> 2.</p>
@@ -500,7 +409,7 @@ flag, the TNC sends a 0-byte data frame to indicate loss of signal.</p>
 from the LICH in order to resume sending to the host.</p>
 </div>
 <div class="section" id="busy-channel-lockout">
-<h3>Busy Channel Lockout<a class="headerlink" href="#busy-channel-lockout" title="Permalink to this headline">¶</a></h3>
+<h3>Busy Channel Lockout<a class="headerlink" href="#busy-channel-lockout" title="Permalink to this headline"></a></h3>
 <p>The TNC implements <strong>busy channel lockout</strong> by enabling half-duplex mode on
 the TNC, and disables <strong>busy channel lockout</strong> by enabling full-duplex mode.
 When busy channel lockout occurs, the TNC keeps the link setup frame and
@@ -511,7 +420,7 @@ received.</p>
 the link setup frame will not start with frame number 0.</p>
 </div>
 <div class="section" id="id2">
-<h3>Limitations<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>Limitations<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <p>Information is lost by having the TNC decode the LICH.  It is not possible to
 communicate to the host that the LICH bytes are known to be invalid.</p>
 <p>Should we have the TNC signal the host by dropping known invalid LICH segments?
@@ -519,7 +428,7 @@ The host can tell that the LICH is missing by looking at the frame size.</p>
 </div>
 </div>
 <div class="section" id="mixing-modes">
-<h2>Mixing Modes<a class="headerlink" href="#mixing-modes" title="Permalink to this headline">¶</a></h2>
+<h2>Mixing Modes<a class="headerlink" href="#mixing-modes" title="Permalink to this headline"></a></h2>
 <p>An M17 KISS TNC need not keep track of state across distinct TNC ports.  Packet
 transfers are sent one packet at a time.  It is OK to send to port 0 and port 1
 in subsequent transfers.  It is also OK to send a packet followed immediately
@@ -527,7 +436,7 @@ by a voice streams.  As mentioned earlier, it is a protocol violation to sent
 a KISS frame to any other port while a stream is active.  However, a packet
 can be sent immediately following a voice stream (after EOS is sent).</p>
 <div class="section" id="back-to-back-transfers">
-<h3>Back-to-back Transfers<a class="headerlink" href="#back-to-back-transfers" title="Permalink to this headline">¶</a></h3>
+<h3>Back-to-back Transfers<a class="headerlink" href="#back-to-back-transfers" title="Permalink to this headline"></a></h3>
 <p>The TNC is expected to detect back-to-back transfers from the host, even across
 different KISS ports, and suppress the generation of the preamble.</p>
 <p>For example, a packet containing APRS data sent immediately on PTT key-up
@@ -540,9 +449,9 @@ the remote end to send ACKs for each of the packets.</p>
 </div>
 </div>
 <div class="section" id="implementation-details">
-<h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this headline">¶</a></h2>
+<h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this headline"></a></h2>
 <div class="section" id="polarity">
-<h3>Polarity<a class="headerlink" href="#polarity" title="Permalink to this headline">¶</a></h3>
+<h3>Polarity<a class="headerlink" href="#polarity" title="Permalink to this headline"></a></h3>
 <p>One of the issues that must be addressed by the TNC designer, and one which
 the KISS protocol offers no ready solution for, is the issue of polarity.</p>
 <p>A TNC must interface with a RF transceiver for a complete M17 physical layer
@@ -567,49 +476,32 @@ by the KISS specification.</p>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="ip_encapsulation.html" class="btn btn-neutral float-left" title="M17 Internet Protocol (IP) Networking" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, Project M17.
-
-    </p>
+    <p>&#169; Copyright 2021, Project M17.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
