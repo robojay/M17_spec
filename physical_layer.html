@@ -6,6 +6,7 @@
   <title>Physical Layer &mdash; M17 Protocol Specification  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -249,18 +250,18 @@ g =&amp; x^{11} + x^{10} + x^6 + x^5 + x^4 + x^2 + 1
 <div class="math notranslate nohighlight">
 \begin{align}
   G = \begin{bmatrix} I_k | P \end{bmatrix} = &amp; \begin{bmatrix}
-   1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;1&amp;0&amp;1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1\\
-   0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;1&amp;1&amp;0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;1\\
-   0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;1&amp;0&amp;1&amp;0\\
-   0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0\\
-   0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0&amp;0&amp;0\\
-   0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0&amp;1\\
-   0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0&amp;1&amp;1&amp;0&amp;1&amp;1&amp;1\\
-   0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;1&amp;1&amp;0&amp;1&amp;1&amp;1&amp;1&amp;0&amp;0&amp;1\\
-   0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;1&amp;1&amp;0&amp;1&amp;1&amp;1&amp;1&amp;0&amp;0\\
-   0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;1&amp;1&amp;0&amp;1&amp;1&amp;1&amp;1&amp;1\\
-   0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;1&amp;0&amp;1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0\\
-   0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;1&amp;0&amp;1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1&amp;1\\
+   1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;0&amp;1&amp;0&amp;1\\
+   0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;0&amp;1&amp;1\\
+   0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0&amp;1&amp;0&amp;0&amp;0\\
+   0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0&amp;1&amp;0&amp;0\\
+   0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0&amp;1&amp;0\\
+   0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0&amp;1\\
+   0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0&amp;0&amp;1&amp;1&amp;0&amp;1\\
+   0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0&amp;0&amp;1&amp;1&amp;1\\
+   0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0\\
+   0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;1&amp;0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;1&amp;1&amp;1\\
+   0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;1&amp;1&amp;1&amp;1&amp;0\\
+   0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;0&amp;1&amp;0&amp;1&amp;1\\
   \end{bmatrix}
 \end{align}</div><p>The output of the Golay encoder is shown in the table below.</p>
 <blockquote>
