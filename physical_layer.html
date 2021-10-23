@@ -246,7 +246,8 @@ meaning that the input data (message) is embedded in the codeword.</p>
 \[\begin{align}
 g =&amp; x^{11} + x^{10} + x^6 + x^5 + x^4 + x^2 + 1
 \end{align}\]</div>
-<p>This is equivalent to 0xC75 in hexadecimal notation. The generating matrix <em>G</em> is described below.</p>
+<p>This is equivalent to 0xC75 in hexadecimal notation. Both the generating matrix <em>G</em>
+and parity check matrix <em>H</em> are shown below.</p>
 <div class="math notranslate nohighlight">
 \begin{align}
   G = \begin{bmatrix} I_k | P \end{bmatrix} = &amp; \begin{bmatrix}
@@ -262,6 +263,21 @@ g =&amp; x^{11} + x^{10} + x^6 + x^5 + x^4 + x^2 + 1
    0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;1&amp;0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;1&amp;1&amp;1\\
    0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;1&amp;1&amp;1&amp;1&amp;0\\
    0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;0&amp;1&amp;0&amp;1&amp;1\\
+  \end{bmatrix}
+      \newline\newline
+  H = \begin{bmatrix} P^T | I_k \end{bmatrix} = &amp; \begin{bmatrix}
+   1&amp;0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;1&amp;1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\
+   1&amp;1&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\
+   0&amp;1&amp;1&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\
+   0&amp;0&amp;1&amp;1&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\
+   0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;1&amp;0&amp;1&amp;1&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\
+   1&amp;0&amp;1&amp;0&amp;1&amp;0&amp;1&amp;1&amp;1&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\
+   1&amp;1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0\\
+   1&amp;1&amp;0&amp;1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0\\
+   0&amp;1&amp;1&amp;0&amp;1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0\\
+   1&amp;0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;1&amp;1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0\\
+   0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;1&amp;1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0\\
+   1&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;0&amp;1&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1\\
   \end{bmatrix}
 \end{align}</div><p>The output of the Golay encoder is shown in the table below.</p>
 <blockquote>
