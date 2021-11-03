@@ -222,7 +222,8 @@ transmitted. Interleaving is used to combat error bursts.</p>
 <div class="figure align-default" id="id10">
 <img alt="_images/frame_encoding.svg" src="_images/frame_encoding.svg" /><p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">ECC stages of subsequent frames</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
 </div>
-<p>A 48-bit (type 1) chunk of the LSF is partitioned into 4 12-bit parts and
+<p>A 40-bit (type 1) chunk of the LSF along with a 3-bit modulo 6 counter
+(LICH_CNT) and 5 reserved bits (see Table 7) is partitioned into 4 12-bit parts and
 encoded using Golay (24, 12) code. This produces 96 encoded bits
 of type 2. These bits are used in the Link Information Channel (LICH).</p>
 <p>16-bit FN and 128 bits of payload (144 bits total) are convolutionally encoded in a manner
