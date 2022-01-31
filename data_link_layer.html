@@ -59,6 +59,18 @@
 <li class="toctree-l3"><a class="reference internal" href="#carrier-sense-multiple-access">Carrier-sense Multiple Access</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#bert-mode">BERT Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bert-frame">BERT Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bert-receiver">BERT Receiver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#synchronization">Synchronization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#counting-bit-errors">Counting Bit Errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resynchronization">Resynchronization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="application_layer.html">Application Layer</a></li>
@@ -102,7 +114,7 @@
              
   <div class="section" id="data-link-layer">
 <h1>Data Link Layer<a class="headerlink" href="#data-link-layer" title="Permalink to this headline"></a></h1>
-<p>The Data Link layer is split into two modes:</p>
+<p>The Data Link layer is split into three modes:</p>
 <ul class="simple">
 <li><dl class="simple">
 <dt>Packet mode</dt><dd><p>Data are sent in small bursts, on the order of 100s to 1000s of bytes
@@ -114,6 +126,12 @@ at a time, after which the physical layer stops sending data. e.g. messages, bea
 <dt>Stream mode</dt><dd><p>Data are sent in a continuous stream for an indefinite amount of time,
 with no break in physical layer output, until the stream ends. e.g. voice data,
 bulk data transfers, etc.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>BERT mode</dt><dd><p>PRBS9 is used to fill frames with a deterministic bit sequence.  Frames are sent
+in a continuous sequence.</p>
 </dd>
 </dl>
 </li>
@@ -136,10 +154,11 @@ Frame signalling is contained within the <strong>Link Information Channel (LICH)
 <li><p>Link setup frames shall be preceded with 0x55F7.</p></li>
 <li><p>Stream frames shall be preceeded with 0xFF5D.</p></li>
 <li><p>Packet frames shall be preceeded with 0x75FF.</p></li>
+<li><p>BERT frames shall be preceeded with 0xDF55.</p></li>
 </ul>
 </div></blockquote>
 <p>All syncwords are type 4 bits.</p>
-<p>These sync words are based on <a class="reference external" href="https://en.wikipedia.org/wiki/Barker_code">Barker codes</a>.  The sequence 0xDF55 (symbols -3 +3 -3 -3 +3 +3 +3 +3) is reserved.</p>
+<p>These sync words are based on <a class="reference external" href="https://en.wikipedia.org/wiki/Barker_code">Barker codes</a>.</p>
 </div>
 <div class="section" id="link-setup-frame">
 <h3>Link setup frame<a class="headerlink" href="#link-setup-frame" title="Permalink to this headline"></a></h3>
@@ -632,6 +651,204 @@ a shared network.  Specifically, P-persistent access is used.  Each time slot is
 and the probability SHOULD default to 25%.  In terms of the values used by the KISS protocol, these
 equate to a slot time of 4 and a P-persistence value of 63.</p>
 <p>The benefit of this method is that it imposes no penalty on uncontested networks.</p>
+</div>
+</div>
+<div class="section" id="bert-mode">
+<h2>BERT Mode<a class="headerlink" href="#bert-mode" title="Permalink to this headline"></a></h2>
+<p>BERT mode is a standardized, interoperable mode for bit error rate testing.  The preamble is
+sent, followed by an indefinite sequence of BERT frames.  Notably, a link setup frame must not
+be sent in BERT mode.</p>
+<div class="section" id="purpose">
+<h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline"></a></h3>
+<p>The primary purpose of defining a bit error rate testing standard for M17 is to enhance
+interoperability testing across M17 hardware and software implementations, and to aid in the
+configuration and tuning of ad hoc communications equipment common in amateur radio.</p>
+</div>
+<div class="section" id="bert-frame">
+<h3>BERT Frame<a class="headerlink" href="#bert-frame" title="Permalink to this headline"></a></h3>
+<p>Each BERT frame is preceeded by the BERT sync word, 0xDF55.</p>
+<p>The BERT frame consists of 197 bits from a <a class="reference external" href="https://en.wikipedia.org/wiki/Pseudorandom_binary_sequence">PRBS9</a>
+generator.  This is 24 bytes and 5 bits of data.  The next frame starts with the 198th bit from the PRBS9
+generator.  The same generator is used for each subsequent frame without being reset.  The number of bits
+pulled from the generator, 197, is a prime number.  This will produce a reasonably large number of unique
+frames even with a PRBS generator with a relatively short period.</p>
+<p>The PRBS uses the ITU standard PRBS9 polynomial <span class="math notranslate nohighlight">\(x^{9}+x^{5}+1\)</span></p>
+<p>This is the traditional form for a linear feedback shift register (LFSR) used
+to generate a psuedorandom binary sequence.</p>
+<div class="figure align-default">
+<img alt="_images/m17-traditional-lfsr.png" src="_images/m17-traditional-lfsr.png" />
+</div>
+<p>However, the M17 LFSR is a slightly different.  The M17 PRBS9 uses the
+generated bit as the output bit rather than the high-bit before the shift.</p>
+<div class="figure align-default">
+<img alt="_images/m17-prbs9.png" src="_images/m17-prbs9.png" />
+</div>
+<p>This will result in the same sequence, just shifted by nine bits.</p>
+<div class="math notranslate nohighlight">
+\[{M17\_PRBS}_{n} = {PRBS9}_{n + 8}\]</div>
+<p>The reason for this is that it allows for easier synchronization.  This is
+equivalent to a multiplicative scrambler (a self-synchronizing scrambler)
+fed with a stream of 0s.</p>
+<div class="figure align-default">
+<img alt="_images/m17-equivalent-scrambler.png" src="_images/m17-equivalent-scrambler.png" />
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PRBS9</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">uint16_t</span> <span class="n">MASK</span> <span class="o">=</span> <span class="mh">0x1FF</span><span class="p">;</span>
+  <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">uint8_t</span> <span class="n">TAP_1</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>             <span class="c1">// Bit 9</span>
+  <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">uint8_t</span> <span class="n">TAP_2</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>             <span class="c1">// Bit 5</span>
+
+  <span class="kt">uint16_t</span> <span class="n">state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+  <span class="kt">bool</span> <span class="n">generate</span><span class="p">()</span>
+  <span class="p">{</span>
+      <span class="kt">bool</span> <span class="n">result</span> <span class="o">=</span> <span class="p">((</span><span class="n">state</span> <span class="o">&gt;&gt;</span> <span class="n">TAP_1</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">state</span> <span class="o">&gt;&gt;</span> <span class="n">TAP_2</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">state</span> <span class="o">=</span> <span class="p">((</span><span class="n">state</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">result</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">MASK</span><span class="p">;</span>
+      <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>The PRBS9 SHOULD be initialized with a state of 1.</p>
+<table class="docutils align-default" id="id19">
+<caption><span class="caption-number">Table 17 </span><span class="caption-text">Bit fields of BERT frame</span><a class="headerlink" href="#id19" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bits</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0-196</p></td>
+<td><p>BERT PRBS9 payload</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Flush bits for convolutional coder</p></td>
+</tr>
+</tbody>
+</table>
+<p>The 201 bits are convolutionally encoded to 402 type 2 bits.</p>
+<p>The 402 bits are punctured using the P2 puncture matrix to get 368 type 3 bits.</p>
+<p>The 368 punctured bits are interleaved and decorrelated to get the type 4 bits
+to be transmitted.</p>
+<p>This provides the same error correction coding used for the stream payload.</p>
+<table class="docutils align-default" id="id20">
+<caption><span class="caption-number">Table 18 </span><span class="caption-text">BERT frame</span><a class="headerlink" href="#id20" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bits</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>16 bits</p></td>
+<td><p>Sync word 0xDF55</p></td>
+</tr>
+<tr class="row-odd"><td><p>368 bits</p></td>
+<td><p>Payload</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="bert-receiver">
+<h3>BERT Receiver<a class="headerlink" href="#bert-receiver" title="Permalink to this headline"></a></h3>
+<p>The receiver detects the frame is a BERT frame based on the sync word
+received.  If the PRBS9 generator is reset at this point, the sender and
+receiver should be synchonized at the start.  This, however, is not common
+nor is it required. PRBS generators can be self-synchronizing.</p>
+<div class="section" id="synchronization">
+<h4>Synchronization<a class="headerlink" href="#synchronization" title="Permalink to this headline"></a></h4>
+<p>The receiver will synchronize the PRBS by first XORing the received bit
+with the LFSR taps.  If the result of the XOR is a 1, it is an error (the
+expected feedback bit and the input do not match) and the sync count is
+reset.  The received bit is then also shifted into the LFSR state register.
+Once a sequence of eighteen (18) consecutive good bits are recovered (twice
+the length of the LFSR), the stream is considered syncronized.</p>
+<div class="figure align-default">
+<img alt="_images/m17-prbs9-sync.png" src="_images/m17-prbs9-sync.png" />
+</div>
+<p>During synchronization, bits received and bit errors are not counted towards
+the overall bit error rate.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PRBS9</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">uint8_t</span> <span class="n">LOCK_COUNT</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span>   <span class="c1">// 18 consecutive good bits.</span>
+  <span class="p">...</span>
+  <span class="c1">// PRBS Syncronizer. Returns 0 if the bit matches the PRBS, otherwise 1.</span>
+  <span class="c1">// When synchronizing the LFSR used in the PRBS, a single bad input bit</span>
+  <span class="c1">// will result in 3 error bits being emitted, one for each tap in the LFSR.</span>
+  <span class="kt">bool</span> <span class="n">syncronize</span><span class="p">(</span><span class="kt">bool</span> <span class="n">bit</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="kt">bool</span> <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">bit</span> <span class="o">^</span> <span class="p">(</span><span class="n">state</span> <span class="o">&gt;&gt;</span> <span class="n">TAP_1</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">state</span> <span class="o">&gt;&gt;</span> <span class="n">TAP_2</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">state</span> <span class="o">=</span> <span class="p">((</span><span class="n">state</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">bit</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">MASK</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">sync_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// error</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="o">++</span><span class="n">sync_count</span> <span class="o">==</span> <span class="n">LOCK_COUNT</span><span class="p">)</span> <span class="p">{</span>
+              <span class="n">synced</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+              <span class="p">...</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="counting-bit-errors">
+<h4>Counting Bit Errors<a class="headerlink" href="#counting-bit-errors" title="Permalink to this headline"></a></h4>
+<p>After synchronization, BERT mode switchs to error-counting mode, where the
+received bits are compared to a free-running PRBS9 generator.  Each bit that
+does not match the output of the free-running LFSR is counted as a bit error.</p>
+<div class="figure align-default">
+<img alt="_images/m17-prbs9-validation.png" src="_images/m17-prbs9-validation.png" />
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PRBS9</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="c1">// PRBS validator.  Returns 0 if the bit matches the PRBS, otherwise 1.</span>
+  <span class="c1">// The results are only valid when sync() returns true;</span>
+  <span class="kt">bool</span> <span class="n">validate</span><span class="p">(</span><span class="kt">bool</span> <span class="n">bit</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="kt">bool</span> <span class="n">result</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">synced</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">result</span> <span class="o">=</span> <span class="n">synchronize</span><span class="p">(</span><span class="n">bit</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="c1">// PRBS is now free-running.</span>
+          <span class="n">result</span> <span class="o">=</span> <span class="n">bit</span> <span class="o">^</span> <span class="n">generate</span><span class="p">();</span>
+          <span class="n">count_errors</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resynchronization">
+<h4>Resynchronization<a class="headerlink" href="#resynchronization" title="Permalink to this headline"></a></h4>
+<p>The receiver must keep track of the number of bit errors over a period of
+128 bits.  If more than 18 bit errors occur, the synchronization process
+starts anew.  This is necessary in the case of missed frames or other serious
+synchronization issues.</p>
+<p>Bits received and errors which occur during resynchronization are not counted
+towards the bit error rate.</p>
+</div>
+</div>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://www.itu.int/rec/T-REC-O.150-199210-S">http://www.itu.int/rec/T-REC-O.150-199210-S</a></p></li>
+<li><p><a class="reference external" href="http://www.pldworld.com/_hdl/5/-thorsten-gaertner.de/vhdl/PRBS.pdf">http://www.pldworld.com/_hdl/5/-thorsten-gaertner.de/vhdl/PRBS.pdf</a></p></li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 </div>
