@@ -190,13 +190,21 @@ the rest of this specification.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>32</p></td>
-<td><p>32-bit fixed point degrees and decimal minutes (TBD)</p></td>
-<td><p>Latitude</p></td>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>8-bit signed integer</p></td>
+<td><p>Latitude - degrees, integer part (-90..+90, positive values for northern hemisphere)</p></td>
 </tr>
-<tr class="row-odd"><td><p>32</p></td>
-<td><p>32-bit fixed point degrees and decimal minutes (TBD)</p></td>
-<td><p>Longitude</p></td>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>16-bit unsigned integer</p></td>
+<td><p>Latitude - degrees, fractional part (eg. 0.5 -&gt; 32,768)</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>16-bit signed integer</p></td>
+<td><p>Longitude - degrees, integer part (-180..+180, positive values for eastern hemisphere)</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>16-bit unsigned integer</p></td>
+<td><p>Longitude - degrees, fractional part (eg. 0.5 -&gt; 32,768)</p></td>
 </tr>
 <tr class="row-even"><td><p>16</p></td>
 <td><p>unsigned integer</p></td>
@@ -208,9 +216,9 @@ the rest of this specification.</p>
 </tr>
 <tr class="row-even"><td><p>10</p></td>
 <td><p>unsigned integer</p></td>
-<td><p>Speed in miles per hour.</p></td>
+<td><p>Speed in knots</p></td>
 </tr>
-<tr class="row-odd"><td><p>12</p></td>
+<tr class="row-odd"><td><p>20</p></td>
 <td><p>Reserved values</p></td>
 <td><p>Transmitter/Object description field</p></td>
 </tr>
