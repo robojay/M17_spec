@@ -309,6 +309,19 @@ and parity check matrix <em>H</em> are shown below.</p>
 </table>
 </div></blockquote>
 <p>Four of these 24-bit blocks are used to reconstruct the LSF.</p>
+<p>Sample MATLAB/Octave code snippet for generating <em>G</em> and <em>H</em> matrices is shown below.</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Golay(24,12) matrices generator</span><a class="headerlink" href="#id11" title="Permalink to this code"></a></div>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="p">=</span> <span class="n">hex2poly</span><span class="p">(</span><span class="s">&#39;0xC75&#39;</span><span class="p">);</span>
+<span class="p">[</span><span class="n">H</span><span class="p">,</span><span class="n">G</span><span class="p">]</span> <span class="p">=</span> <span class="n">cyclgen</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="n">P</span><span class="p">);</span>
+
+<span class="n">G_P</span> <span class="p">=</span> <span class="n">G</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">11</span><span class="p">);</span>
+<span class="n">I_K</span> <span class="p">=</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+<span class="n">G</span> <span class="p">=</span> <span class="p">[</span><span class="n">I_K</span> <span class="n">G_P</span> <span class="n">P</span><span class="p">.</span><span class="o">&#39;</span><span class="p">];</span>
+<span class="n">H</span> <span class="p">=</span> <span class="p">[</span><span class="n">transpose</span><span class="p">([</span><span class="n">G_P</span> <span class="n">P</span><span class="p">.</span><span class="o">&#39;</span><span class="p">])</span> <span class="n">I_K</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="convolutional-encoder">
 <h3>Convolutional encoder<a class="headerlink" href="#convolutional-encoder" title="Permalink to this headline"></a></h3>
@@ -333,9 +346,9 @@ G_2(D) =&amp; 1+ D + D^2 + D^4
 Sub-part A: Common Air Interface</p>
 </dd>
 </dl>
-<div class="figure align-default" id="id11">
+<div class="figure align-default" id="id12">
 <a class="reference internal image-reference" href="_images/convolutional.svg"><img alt="_images/convolutional.svg" src="_images/convolutional.svg" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Convolutional coder diagram</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Convolutional coder diagram</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
 </div>
 </div>
 <div class="section" id="code-puncturing">
@@ -383,8 +396,8 @@ P_2 = &amp; \begin{bmatrix}
 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0
 \end{bmatrix}
 \end{align}</div><p>The linearized representations are:</p>
-<div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">linearized puncture patterns</span><a class="headerlink" href="#id12" title="Permalink to this code"></a></div>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">linearized puncture patterns</span><a class="headerlink" href="#id13" title="Permalink to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">P1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
 <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
 <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
